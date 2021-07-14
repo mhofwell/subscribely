@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import React from "react";
 import styles from "../styles/Home.module.css";
-import client from "../apollo-client";
+import client from "../middleware/apollo-client";
 import { signIn, signOut, useSession } from "next-auth/client";
 import gql from "graphql-tag";
 
@@ -49,14 +49,14 @@ if (loading) {
         <p className={styles.description}>Track your active monthly subscriptions in one place </p>
         <h2>
           {session ? (
-            <>
+            <React.fragmnent>
               <p>Signed in as {session.user.email}</p>
               <div className={styles.containerb}>
                 <button className={styles.button} href="#" onClick={signOut}>
                   Sign Out
                 </button>
               </div>
-            </>
+            </React.fragmnent>
           ) : (
             <button className={styles.button} href="#" onClick={signIn}>
               Start
